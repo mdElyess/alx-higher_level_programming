@@ -1,30 +1,16 @@
 #!/usr/bin/python3
 # 1-number_of_lines.py
-"""Defines a text file-reading function."""
+"""Defines a file-writing function."""
 
 
-def read_lines(filename="", nb_lines=0):
-    """Print a given number of lines from a UTF8 text file to stdout.
+def write_file(filename="", text=""):
+    """Write a string to a UTF8 text file.
 
     Args:
-        filename (str): The name of the file.
-        nb_lines (int): The number of lines to read from the file.
+        filename (str): The name of the file to write.
+        text (str): The text to write to the file.
+    Returns:
+        The number of characters written.
     """
-    with open(filename, encoding="utf-8") as f:
-        if nb_lines <= 0:
-            print(f.read(), end="")
-            return
-
-        lines = 0
-        for line in f:
-            lines += 1
-        f.seek(0)
-        if nb_lines >= lines:
-            print(f.read(), end="")
-            return
-
-        else:
-            n = 0
-            while n < nb_lines:
-                print(f.readline(), end="")
-                n += 1
+    with open(filename, "w", encoding="utf-8") as f:
+        return f.write(text)
